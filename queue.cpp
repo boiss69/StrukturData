@@ -67,15 +67,15 @@ printf("\n");
 
 int main(){
 printf("\n");
-printf("First Insertion\n");
-Enqueue(2); Print(); 
-printf("Second Insertion\n");
-Enqueue(4); Print();
-printf("Third Insertion\n");
-Enqueue(6); Print();
-printf("State of queue after Dequeue() operation\n");
+printf("Masukkan Angka Pertama\n");
+Enqueue(22); Print(); 
+printf("Masukkan Angka Kedua\n");
+Enqueue(44); Print();
+printf("Masukkan Angka Ketiga\n");
+Enqueue(66); Print();
+printf("Keadaan queue setelah Operasi Dequeue()\n");
 Dequeue();  Print();
-printf("Fourth Insertion\n");
-Enqueue(8); Print();
+printf("Masukkan Angka Keempat\n");
+Enqueue(88); Print();
 
 }
