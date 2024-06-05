@@ -1,116 +1,113 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 
-class Node {
-public:
-	int data;
-	Node* link;
-
-	// Constructor
-	Node(int n)
-	{
-		this->data = n;
-		this->link = NULL;
-	}
+struct Node
+{
+    int data;
+    struct Node* link;
 };
 
-class Stack {
-	Node* top;
+struct Node* top;
 
-public:
-	Stack() { top = NULL; }
+// Using this function we will be pushing elements into the stack
+void push(int data)
+{
 
-	void push(int data)
-	{
+    struct Node* tem;
+    tem = new Node();
 
-		Node* temp = new Node(data);
+    if (!tem)
+    {
+        cout << "\nHeap Overflow";
+        exit(1);
+    }
 
+    tem->data = data;
 
-		if (!temp) {
-			cout << "\nStack Overflow";
-			exit(1);
-		}
+    tem->link = top;
 
-		temp->data = data;
+    top = tem;
+}
 
-		temp->link = top;
+// Using this function we will be checking whether the stack is empty or not
+int isEmpty()
+{
+    return top == NULL;
+}
 
-		top = temp;
-	}
+// Using this function we will return the top element of the stack
+int peek()
+{
 
-	bool isEmpty()
-	{
+    if (!isEmpty())
+        return top->data;
+    else
+        exit(1);
+}
 
-		return top == NULL;
-	}
+// Using this function we will pop the top element of the stack
+void pop()
+{
+    struct Node* tem;
 
-	int peek()
-	{
+    if (top == NULL)
+    {
+        cout << "\nStack Underflow" << endl;
+        exit(1);
+    }
+    else
+    {
+        tem = top;
 
-		if (!isEmpty())
-			return top->data;
-		else
-			exit(1);
-	}
+        top = top->link;
 
-	void pop()
-	{
-		Node* temp;
+        tem->link = NULL;
 
-		if (top == NULL) {
-			cout << "\nStack Underflow" << endl;
-			exit(1);
-		}
-		else {
+        free(tem);
+    }
+}
 
-			temp = top;
-			top = top->link;
-			free(temp);
-		}
-	}
+// this function will be used to display the items of the stack
+void display()
+{
+    struct Node* tem;
 
-	void display()
-	{
-		Node* temp;
+    if (top == NULL)
+    {
+        cout << "\nStack Underflow";
+        exit(1);
+    }
+    else
+    {
+        tem = top;
+        while (tem != NULL)
+        {
 
+            cout << tem->data << "-> ";
 
-		if (top == NULL) {
-			cout << "\nStack Underflow";
-			exit(1);
-		}
-		else {
-			temp = top;
-			while (temp != NULL) {
-
-				cout << temp->data;
-
-				temp = temp->link;
-				if (temp != NULL)
-					cout << " -> ";
-			}
-		}
-	}
-};
+            tem = tem->link;
+        }
+    }
+}
 
 int main()
 {
-	Stack s;
+    push(11);
+    push(22);
+    push(33);
+    push(44);
+    display();
 
-	s.push(11);
-	s.push(22);
-	s.push(33);
-	s.push(44);
-	s.display();
+    cout << "\nTop element: "<< peek() << endl;
 
-	cout << "\nTop element: " << s.peek() << endl;
+    pop();
+    pop();
 
-	s.pop();
-	s.pop();
-	s.display();
+    cout<<"Stack setelah popping 2 kali \n";
+    display();
 
-	cout << "\nTop element: " << s.peek() << endl;
-
-	return 0;
+    cout << "\nTop element: "<< peek() << endl;
+        
+    return 0;
 }
