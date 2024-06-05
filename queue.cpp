@@ -73,9 +73,13 @@ printf("Masukkan Angka Kedua\n");
 Enqueue(44); Print();
 printf("Masukkan Angka Ketiga\n");
 Enqueue(66); Print();
-printf("Keadaan queue setelah Operasi Dequeue()\n");
+printf("queue setelah Operasi Dequeue(1)\n");
 Dequeue();  Print();
 printf("Masukkan Angka Keempat\n");
 Enqueue(88); Print();
+printf("queue setelah Operasi Dequeue(2)\n");
+Dequeue();  Print();
+printf("Masukkan Angka Kelima\n");
+Enqueue(99); Print();
 
 }
